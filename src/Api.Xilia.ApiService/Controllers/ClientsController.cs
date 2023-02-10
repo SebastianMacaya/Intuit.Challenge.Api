@@ -2,6 +2,7 @@
 using Api.Intuit.Application.Handlers.Clients;
 using Api.Intuit.Application.Models.Clients.Request;
 using Api.Intuit.Application.Models.Clients.Response;
+using Api.Intuit.Domain.BdIntuitClientes.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -61,10 +62,14 @@ namespace Api.Intuit.ApiService.Controllers
             return Ok(response);
         }
 
-        // DELETE api/<ValuesController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpGet("name")]
+        
+        public async Task<IActionResult> Get([FromQuery] GetByNameClientRequestModel model)
         {
+            var result = await mediator.Send(new GetByNameClientHandlerRequest(model));
+
+            return Ok(result.Model);
+          
         }
     }
 }

@@ -10,13 +10,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Api.Intuit.Application.Handlers
+namespace Api.Intuit.Application.Handlers.Clients
 {
     public class GetAllClientsHandlerRequest : IRequest<IEnumerable<GetAllClientsResponseModel>>
     {
         public GetAllClientsHandlerRequest()
         {
-            
+
         }
     }
 
