@@ -24,7 +24,15 @@ namespace Api.Intuit.Application.Profiles
                 .ForMember(destino => destino.phone, origen => origen.MapFrom(src => src.phone))
                 .ForMember(destino => destino.email, origen => origen.MapFrom(src => src.email));
 
-
+            CreateMap<Cliente, GetAllClientsResponseModel>()
+             .ForMember(destino => destino.id, origen => origen.MapFrom(src => src.ID))
+             .ForMember(destino => destino.name, origen => origen.MapFrom(src => src.name))
+             .ForMember(destino => destino.surname, origen => origen.MapFrom(src => src.surname))
+             .ForMember(destino => destino.birthdate, origen => origen.MapFrom(src => src.birthdate))
+             .ForMember(destino => destino.cuit, origen => origen.MapFrom(src => src.cuit))
+             .ForMember(destino => destino.address, origen => origen.MapFrom(src => src.address))
+             .ForMember(destino => destino.phone, origen => origen.MapFrom(src => src.phone))
+             .ForMember(destino => destino.email, origen => origen.MapFrom(src => src.email));
 
 
 

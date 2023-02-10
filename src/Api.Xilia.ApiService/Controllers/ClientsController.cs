@@ -1,5 +1,7 @@
-﻿using Api.Intuit.Application.Handlers.Clients;
+﻿using Api.Intuit.Application.Handlers;
+using Api.Intuit.Application.Handlers.Clients;
 using Api.Intuit.Application.Models.Clients.Request;
+using Api.Intuit.Application.Models.Clients.Response;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,9 +24,13 @@ namespace Api.Intuit.ApiService.Controllers
 
         // GET: api/<ValuesController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        [ProducesResponseType(typeof(IEnumerable<GetAllClientsResponseModel>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            var result = await mediator.Send(new GetAllClientsHandlerRequest());
+
+            return Ok(result);
         }
 
         // GET api/<ValuesController>/5
