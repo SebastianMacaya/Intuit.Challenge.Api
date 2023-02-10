@@ -18,6 +18,9 @@ namespace Api.Intuit.Application.Models.Clients.Request.Validations
                 .Must(name => ValidationName(name)).WithMessage("El nombre solo puede tener letras y apostrofes");
             RuleFor(x => x.surname).NotEmpty().NotNull().WithMessage("El apellido es requerido");
             RuleFor(x => x.birthdate).NotEmpty().WithMessage("La fecha de nacimiento es requerida");
+            RuleFor(x => x.birthdate)
+           .Must(ValidDate)
+           .WithMessage("El campo fecha de nacimiento debe ser una fecha válida");
             RuleFor(x => x.cuit).NotEmpty().WithMessage("El cuit es requerido").Length(11, 13);
             RuleFor(x => x.address).NotEmpty().WithMessage("La direccion es requerida");
             RuleFor(x => x.phone).NotEmpty().NotNull().WithMessage("El telefono es requerido");
@@ -36,6 +39,9 @@ namespace Api.Intuit.Application.Models.Clients.Request.Validations
             //Controlamos que no tengan los siguientes simbolos
             return !Regex.IsMatch(nombre, @"[!@#$%^&*()_+=\[{\]};:<>|./?,-]");
         }
-
+        private bool ValidDate(DateTime birthdate)
+        {
+            return birthdate != default(DateTime);
+        }
     }
 }
