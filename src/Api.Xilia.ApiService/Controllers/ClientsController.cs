@@ -29,11 +29,15 @@ namespace Api.Intuit.ApiService.Controllers
 
         // GET api/<ValuesController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<IActionResult> Get(Guid id)
         {
-            return "value";
+            var result = await mediator.Send(new GetByIdClientHandlerRequest(id));
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
         }
-
         // POST api/<ValuesController>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] PostClientRequestModel model)
