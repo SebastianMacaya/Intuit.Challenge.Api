@@ -19,4 +19,5 @@ luego deben correr las migraciones estando en la capa de dominio
   update-database
 ```
 
+luego ya pueden iniciar el proyecto
 ![](demoBack.gif)
