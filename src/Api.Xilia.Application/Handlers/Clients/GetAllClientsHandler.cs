@@ -34,6 +34,7 @@ namespace Api.Intuit.Application.Handlers.Clients
         public async Task<IEnumerable<GetAllClientsResponseModel>> Handle(GetAllClientsHandlerRequest request, CancellationToken cancellationToken)
         {
             var clients = await unitOfWorkClient.RepositoryQuery.GetAllAsync();
+     
             var result = mapper.Map<IEnumerable<GetAllClientsResponseModel>>(clients);
 
             return result;

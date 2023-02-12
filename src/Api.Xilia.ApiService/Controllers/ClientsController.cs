@@ -54,14 +54,15 @@ namespace Api.Intuit.ApiService.Controllers
         }
 
         // PUT api/<ValuesController>/5
-        [HttpPut("{id}")]
+       /*
+       [HttpPut("{id}")]
         public async Task<ActionResult<PutClientResponseModel>> Put(Guid id, [FromBody] PutClientHandlerRequestModel request)
         {
             request.Id = id;
             var response = await mediator.Send(new PutClientHandlerRequestModel(request));
             return Ok(response);
         }
-
+       */
         [HttpGet("name")]
         
         public async Task<IActionResult> Get([FromQuery] GetByNameClientRequestModel model)
